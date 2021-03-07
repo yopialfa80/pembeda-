@@ -36,21 +36,33 @@ class UserControllers extends Controller
             $id_kelas = 'USER';
         }
 
-        $picture = $this->uploadFile($request->picture);
-        User::create([
-            'id_kelas' => $id_kelas,
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'picture' => $picture,
-            'nis_nisn' => $request->nis_nisn,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'tempat_lahir' => $request->tempat_lahir,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'agama' => $request->agama,
-            'roles' => $request->roles,
-            'status_login' => 'first_login',
-        ]);
+        $check = User::where('username', $request->username)->first();
+
+        if ($check == null) {
+            $picture = $this->uploadFile($request->picture);
+            User::create([
+                'id_kelas' => $id_kelas,
+                'name' => $request->name,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'picture' => $picture,
+                'nis_nisn' => $request->nis_nisn,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'tempat_lahir' => $request->tempat_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'agama' => $request->agama,
+                'roles' => $request->roles,
+                'status_login' => 'first_login',
+            ]);
+        } else {
+            return response()->json([
+                '_status' => 422,
+                '_message' => 'Username sudah digunakan',
+            ]);
+        }
+
+
+        
 
         return response()->json([
             '_status' => 200,

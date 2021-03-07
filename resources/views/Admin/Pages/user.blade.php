@@ -28,7 +28,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input class="form-control form-control-md" type="text" name="password">
+                                        <input class="form-control form-control-md" type="password" name="password">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -182,5 +182,5 @@
     <script src="{{url('assets/libs')}}/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
     <!-- Datatable init js -->
-    <script src="{{url('assets/js')}}/pages/datatables.init.js"></script>
+    {{-- <script src="{{url('assets/js')}}/pages/datatables.init.js"></script> --}}
 </div>

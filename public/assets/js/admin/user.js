@@ -27,7 +27,21 @@ $("#createNewUser").submit(function(event) {
                     }
                   })
             } else {
-
+                Swal.fire({
+                    type: "error",
+                    title: 'Woah!',
+                    icon: 'error',
+                    html: '<p class="card-text"><small class="text-muted">'+response.responseJSON._message+'</small></p>',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    background: '#fff',
+                    confirmButtonText: '<i style="padding-right: 10px;" class="fa fa-check"></i>Ya, Baiklah!',
+                    confirmButtonClass: 'btn btn-success',
+                    buttonsStyling: false,
+                    onClose: function() {
+                        
+                    }
+                })
             }
         },
         dataType: 'json'
@@ -60,7 +74,6 @@ function getUser() {
         timeout: 600000,
         type: 'GET',
         complete: function(response) {
-            $('#datatable-buttons').DataTable().clear().destroy();
             if (response.responseJSON._status == 200) {
                 var html = '';
                 var inc = 1;
@@ -68,7 +81,14 @@ function getUser() {
                     
                     html += '<tr>';
                     html += '<td scope="row">'+inc+'</td>';
-                    html += '<td><img style="width: 40px; height: 40px;" src="'+ BaseUrl + '/assets/images/data/' + response.responseJSON._data[i].picture+'"</td>';
+
+                    if (response.responseJSON._data[i].picture == null) {
+                        html += '<td><img style="width: 40px; height: 40px;" src="'+ BaseUrl + '/assets/images/data/default.png"</td>';
+                    } else {
+                        html += '<td><img style="width: 40px; height: 40px;" src="'+ BaseUrl + '/assets/images/data/' + response.responseJSON._data[i].picture+'"</td>';
+                    }
+
+                    
                     html += '<td>'+response.responseJSON._data[i].name+'</td>';
                     html += '<td>'+response.responseJSON._data[i].username+'</td>';
                     html += '<td>'+response.responseJSON._data[i].nis_nisn+'</td>';
@@ -81,15 +101,8 @@ function getUser() {
                     inc++
                 }
                 $('#generateUser').html(html);
+                reinitDatatable()
                 
-                $("#datatable-buttons").dataTable({
-                    retrieve: true,
-                    "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-                    "columnDefs": [{ "targets": 3, "orderable": false }],
-                    "pagingType": "full_numbers",
-                    "oLanguage": { "sSearch": "" },
-                    "deferRender": true
-                });
             } else {
 
             }
@@ -141,7 +154,21 @@ function submitPasswordChange() {
                 })
 
             } else {
-                console.log("Something Wrong");
+                Swal.fire({
+                    type: "error",
+                    title: 'Woah!',
+                    icon: 'error',
+                    html: '<p class="card-text"><small class="text-muted">'+response.responseJSON.message+'</small></p>',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    background: '#fff',
+                    confirmButtonText: '<i style="padding-right: 10px;" class="fa fa-check"></i>Ya, Baiklah!',
+                    confirmButtonClass: 'btn btn-success',
+                    buttonsStyling: false,
+                    onClose: function() {
+                        
+                    }
+                })
             }
         },error: function(xhr, status, error) {
             console.log("xhr", xhr);
@@ -149,4 +176,15 @@ function submitPasswordChange() {
             console.log("error", error);
         },
     })
+}
+
+function reinitDatatable() {
+    $("#datatable-buttons").dataTable({
+        retrieve: true,
+        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        "columnDefs": [{ "targets": 3, "orderable": false }],
+        "pagingType": "full_numbers",
+        "oLanguage": { "sSearch": "" },
+        "deferRender": true
+    });
 }
