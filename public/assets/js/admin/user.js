@@ -47,6 +47,10 @@ $("#logo-main-login").hover(function(){
 });
 
 function getUser() {
+
+    $('#datatable-buttons').DataTable().clear();
+    $('#datatable-buttons').DataTable().destroy();
+    
     $.ajax({
         data: '',
         url: ServeUrl + "/admin/get_user",
