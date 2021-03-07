@@ -73,21 +73,6 @@ class UserControllers extends Controller
                 ]);
             }
 
-            $picture = $this->uploadFile($request->picture);
-            User::create([
-                'id_kelas' => $id_kelas,
-                'name' => $request->name,
-                'username' => $request->username,
-                'password' => Hash::make($request->password),
-                'picture' => $picture,
-                'nis_nisn' => $request->nis_nisn,
-                'tanggal_lahir' => $request->tanggal_lahir,
-                'tempat_lahir' => $request->tempat_lahir,
-                'jenis_kelamin' => $request->jenis_kelamin,
-                'agama' => $request->agama,
-                'roles' => $request->roles,
-                'status_login' => 'first_login',
-            ]);
         } else {
             return response()->json([
                 '_status' => 422,
