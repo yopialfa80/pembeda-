@@ -16,43 +16,43 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Nama</label>
-                                        <input class="form-control form-control-md" type="text" name="name">
+                                        <input class="form-control form-control-md" type="text" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input class="form-control form-control-md" type="text" name="username">
+                                        <input class="form-control form-control-md" type="text" name="username" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input class="form-control form-control-md" type="password" name="password">
+                                        <input class="form-control form-control-md" type="password" name="password" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>NIS / NISN</label>
-                                        <input class="form-control form-control-md" type="text" name="nis_nisn">
+                                        <input class="form-control form-control-md" type="text" name="nis_nisn" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
-                                        <input class="form-control form-control-md" type="date" name="tanggal_lahir">
+                                        <input class="form-control form-control-md" type="date" name="tanggal_lahir" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Tempat Lahir</label>
-                                        <input class="form-control form-control-md" type="text" name="tempat_lahir">
+                                        <input class="form-control form-control-md" type="text" name="tempat_lahir" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
-                                        <select class="custom-select" name="jenis_kelamin">
+                                        <select class="custom-select" name="jenis_kelamin" required>
                                             <option selected value="Laki - Laki">Laki - Laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
@@ -61,13 +61,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Agama</label>
-                                        <input class="form-control form-control-md" type="text" name="agama">
+                                        <input class="form-control form-control-md" type="text" name="agama" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select class="custom-select" name="roles">
+                                        <select class="custom-select" name="roles" required>
                                             <option selected value="User">Siswa</option>
                                             <option value="Guru">Guru</option>
                                             <option value="Admin">Admin</option>
